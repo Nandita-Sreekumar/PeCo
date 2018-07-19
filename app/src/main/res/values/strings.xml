@@ -27,4 +27,16 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--Prefs Category-->
+    <string name="pref_category_theme">Application Theme</string>
+
+    <!--Prefs Title Strings-->
+    <string name="pref_dark_mode">Enable Dark Mode</string>
+    <string name="pref_change_accent">Change Theme</string>
+
+    <!--Prefs Summary Strings-->
+    <string name="pref_summary_dark_mode">Change Application Theme to Dark or Light</string>
+    <string name="pref_summary_change_accent">Change the Theme of the Application</string>
 </resources>

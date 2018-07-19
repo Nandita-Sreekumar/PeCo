@@ -22,15 +22,30 @@
  * SOFTWARE.
  */
 
-package dev.shreyansh.peco
+package dev.shreyansh.peco.Views
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.shreyansh.peco.R
+import dev.shreyansh.peco.Util.CustomSharedPrefs
+import dev.shreyansh.peco.Util.ThemeSupport
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
 
+
+class MainActivity : AppCompatActivity() {
+    private val TAG = MainActivity::class.java.simpleName as String
+
+    /* Late Initialize these variables */
+    private lateinit var themeSupport: ThemeSupport
+    private lateinit var prefs: CustomSharedPrefs
+
+    /* Bottom Nav */
+    /* TODO: Implement fragments in nav. */
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
@@ -51,8 +66,47 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        /* Initialize Custom Prefs */
+        runOnUiThread {
+            prefs = CustomSharedPrefs(this)
+            themeSupport = ThemeSupport(this)
+
+            /* Set accent color and Night mode as per pref*/
+            themeSupport.setTheme()
+            themeSupport.nightMode(delegate)
+        }
+
+
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.action_bar_overflow, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        when (item.getItemId()) {
+            R.id.settings -> {
+                startActivityForResult(Intent(this, SettingsActivity::class.java),0)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        /* Re-set Night mode if user has changed it. */
+        themeSupport.nightMode(delegate)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        recreate()
     }
 }
