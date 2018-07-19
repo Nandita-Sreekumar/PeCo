@@ -99,11 +99,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        /* Re-set Night mode if user has changed it. */
-        themeSupport.nightMode(delegate)
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
