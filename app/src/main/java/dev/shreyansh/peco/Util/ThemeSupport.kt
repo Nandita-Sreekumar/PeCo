@@ -26,19 +26,22 @@
 package dev.shreyansh.peco.Util
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
 import dev.shreyansh.peco.Concept.Theme
 import dev.shreyansh.peco.R
 
 
-class ThemeSupport(context: Context) {
+class ThemeSupport(context: Context, activity: AppCompatActivity?) {
 
     private val ctx: Context
+    private val act: AppCompatActivity?
     private val customSharedPrefs: CustomSharedPrefs
 
     init {
         ctx = context
+        act = activity
         customSharedPrefs = CustomSharedPrefs(ctx)
     }
 
@@ -147,6 +150,11 @@ class ThemeSupport(context: Context) {
             THEME_BLUEGRAY -> themeId = R.style.AppTheme_BLUEGRAY
         }
         return themeId
+    }
+
+    fun removeToolbarElevation(choice: Boolean) {
+        if (choice)
+            act?.supportActionBar?.elevation = 0f
     }
 
 }

@@ -40,7 +40,6 @@ import dev.shreyansh.peco.Util.CustomSharedPrefs
 import dev.shreyansh.peco.Util.ThemeSupport
 
 
-
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var prefs: CustomSharedPrefs
@@ -55,11 +54,12 @@ class SettingsActivity : AppCompatActivity() {
          */
         runOnUiThread {
             prefs = CustomSharedPrefs(this)
-            themeSupport = ThemeSupport(this)
+            themeSupport = ThemeSupport(this, this)
 
             /* Set accent color and Night mode as per pref */
             themeSupport.nightMode(delegate)
             themeSupport.setTheme()
+            themeSupport.removeToolbarElevation(true)
 
         }
         frag = supportFragmentManager
@@ -81,7 +81,7 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             prefs = this.activity?.getSharedPreferences(CustomSharedPrefs.PREF, 0)
-            val themeSupport = ThemeSupport(this.activity!!.applicationContext)
+            val themeSupport = ThemeSupport(this.activity!!.applicationContext, null)
             themeSupport.setFragTheme(this.activity!!)
 
             addPreferencesFromResource(preferences)

@@ -31,6 +31,5 @@
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings_24dp"
         android:title="Settings"
-        android:iconTint="?android:attr/colorPrimary"
         app:showAsAction="always"/>
 </menu>

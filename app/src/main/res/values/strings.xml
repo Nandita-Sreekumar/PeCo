@@ -40,4 +40,11 @@
     <!--Prefs Summary Strings-->
     <string name="pref_summary_dark_mode">Change Application Theme to Dark or Light</string>
     <string name="pref_summary_change_accent">Change the Theme of the Application</string>
+
+    <!--Login Activity Strings-->
+    <string name="login_app_name">PeCo\nWork Manager</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_login_button">Login</string>
+    <string name="login_cancel_button">Cancel</string>
 </resources>

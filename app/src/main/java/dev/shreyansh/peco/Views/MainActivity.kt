@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_notifications -> {
                 message.setText(R.string.title_notifications)
+                startActivity(Intent(this, LoginActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -70,11 +71,12 @@ class MainActivity : AppCompatActivity() {
         /* Initialize Custom Prefs */
         runOnUiThread {
             prefs = CustomSharedPrefs(this)
-            themeSupport = ThemeSupport(this)
+            themeSupport = ThemeSupport(this, this)
 
             /* Set accent color and Night mode as per pref*/
             themeSupport.setTheme()
             themeSupport.nightMode(delegate)
+            themeSupport.removeToolbarElevation(true)
         }
 
 
