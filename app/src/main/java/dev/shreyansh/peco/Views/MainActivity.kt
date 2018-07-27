@@ -29,8 +29,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dev.shreyansh.peco.Fragments.PersonalTaskFrag
 import dev.shreyansh.peco.R
 import dev.shreyansh.peco.Util.CustomSharedPrefs
 import dev.shreyansh.peco.Util.ThemeSupport
@@ -51,14 +54,19 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.navigation_home -> {
                 message.setText(R.string.title_home)
+                message.visibility = View.INVISIBLE
+                val pt: Fragment = PersonalTaskFrag()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_space, pt).commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
                 message.setText(R.string.title_dashboard)
+                fragment_space.removeAllViews()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
                 message.setText(R.string.title_notifications)
+                fragment_space.removeAllViews()
                 startActivity(Intent(this, LoginActivity::class.java))
                 return@OnNavigationItemSelectedListener true
             }
@@ -79,10 +87,10 @@ class MainActivity : AppCompatActivity() {
             themeSupport.removeToolbarElevation(true)
         }
 
-
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        navigation.selectedItemId = R.id.navigation_home
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -93,7 +101,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
-        when (item.getItemId()) {
+        when (item.itemId) {
             R.id.settings -> {
                 startActivityForResult(Intent(this, SettingsActivity::class.java),0)
                 return true

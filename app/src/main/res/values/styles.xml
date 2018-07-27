@@ -55,7 +55,6 @@
     <style name="Widget.PeCo.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.PeCo.TextInputLayout.HintText</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="boxStrokeColor">?android:attr/textColorPrimary</item>
     </style>
 
     <style name="TextAppearance.PeCo.TextInputLayout.HintText" parent="TextAppearance.MaterialComponents.Subtitle2">

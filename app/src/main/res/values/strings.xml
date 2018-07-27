@@ -25,9 +25,9 @@
 
 <resources>
     <string name="app_name">PeCo</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Personal</string>
+    <string name="title_dashboard">Collaborative</string>
+    <string name="title_notifications">Focus Mode</string>
     <string name="title_activity_settings">Settings</string>
 
     <!--Prefs Category-->
@@ -47,4 +47,15 @@
     <string name="login_password">Password</string>
     <string name="login_login_button">Login</string>
     <string name="login_cancel_button">Cancel</string>
+
+    <!--Personal Task View-->
+    <string name="pt_reminder_date">Reminder on %s at %s</string>
+
+    <!--Add new PT Strings-->
+    <string name="add_task_title">Title</string>
+    <string name="add_task_date">Date</string>
+    <string name="add_task_all_day_check">Is the event for entire day?</string>
+    <string name="add_task_time">Time</string>
+    <string name="add_task_hero">New task!</string>
+    <string name="add_task_button">Done</string>
 </resources>

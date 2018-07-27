@@ -48,7 +48,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Views.MainActivity" />
         </activity>
-        <activity android:name=".Views.LoginActivity"></activity>
+        <activity android:name=".Views.LoginActivity" />
+        <activity android:name=".Views.AddPersonalTaskActivity"></activity>
     </application>
 
 </manifest>
