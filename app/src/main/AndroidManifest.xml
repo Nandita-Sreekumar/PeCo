@@ -49,6 +49,7 @@
                 android:value=".Views.MainActivity" />
         </activity>
         <activity android:name=".Views.LoginActivity" />
+        <receiver android:name=".Receivers.AlarmReceiver"/>
         <activity android:name=".Views.AddPersonalTaskActivity"></activity>
     </application>
 
